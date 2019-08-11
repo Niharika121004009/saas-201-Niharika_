@@ -1,20 +1,22 @@
-# Please use require_relative for requiring any dependencies
 require_relative './application'
+def class
+  system 'class'
+end
 
-# The Main application that will be running your code
 def main_display
-  puts "Please choose the action you would like to perform?" \
+  puts "Please choose the action you want?" \
   "\n1. Enroll into a department" \
   "\n2. Change your department" \
   "\n3. Change your section" \
-  "\n4. View details"
+  "\n4. View the details" \
+  "\n5. Show Departments"
 end
 
-def common_question_1
+def question_1
   puts 'What is your name?'
 end
 
-def common_question_2
+def question_2
   puts "Please select your department from the given choices?" \
   "\nEEE" \
   "\nMECH" \
@@ -22,7 +24,7 @@ def common_question_2
   "\nCIVIL"
 end
 
-def section_question_3
+def question_3
   puts "Please select your section from the given choices?" \
   "\nA" \
   "\nB" \
@@ -43,21 +45,21 @@ loop do
   user_option = gets.chomp.to_i
   case user_option
   when 1
-    common_question_1
+    question_1
     student_name = gets.chomp
-    common_question_2
+    question_2
     student_dept = gets.chomp
     puts application.enroll student_name, student_dept
   when 2
-    common_question_1
+    question_1
     student_name = gets.chomp
-    common_question_2
+    question_2
     student_dept = gets.chomp
     puts application.change_dept student_name, student_dept
   when 3
-    common_question_1
+    question_1
     student_name = gets.chomp
-    section_question_3
+    question_3
     section = gets.chomp
     puts application.change_section student_name, section
   when 4
@@ -65,21 +67,24 @@ loop do
     selected_view = gets.chomp.to_i
     case selected_view
     when 1
-      common_question_2
+      question_2
       student_dept = gets.chomp
       puts application.department_view student_dept
     when 2
-      common_question_2
+      question_2
       student_dept = gets.chomp
-      section_question_3
+      question_3
       section = gets.chomp
-      puts papplication.section_view student_dept, section
+      puts application.section_view student_dept, section
     when 3
-      common_question_1
+      question_1
       student_name = gets.chomp
       puts application.student_details student_name
     end
+  when 5
+    application.show
   end
   puts 'Press any key to go back'
   gets
+  class
 end
